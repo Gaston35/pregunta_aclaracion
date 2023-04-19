@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +21,13 @@
 		}
 	</style>
 	<script>
+            const API_KEY2 = process.env.API_KEY;
+	</script>
+	<script>
 		const userAction = async () => {
 			const reply = "" + document.forms["input"]["reply"].value;
 			const input = document.forms["input"]["input"].value + "aclaración:" + document.forms["input"]["input2"].value;
-			const reponse = await fetch('https://api.openai.com/v1/chat/completions', {
+			const response = await fetch('https://api.openai.com/v1/chat/completions', {
 				method: "POST",
 				body: JSON.stringify({"model": "gpt-3.5-turbo", "messages": 
 					[{"role":"assistant","content": reply},
@@ -31,7 +35,7 @@
 					]}),
 				headers: {
 					"content-type": "application/json",
-					Authorization: "Bearer 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",
+					Authorization: "Bearer " + API_KEY2,
 				}
 			}).then((response) => {
 				if (response.ok) {
@@ -62,4 +66,5 @@
 	</div>
 </body>
 </html>
+
 
